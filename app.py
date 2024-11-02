@@ -10,6 +10,7 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.impute import SimpleImputer
 from imblearn.over_sampling import SMOTE
+from prophet import Prophet
 
 # Função para carregar e preparar dados
 def carregar_dados(filepath):
@@ -237,3 +238,39 @@ def grafico_ocorrencias_mes_tipo(df):
 
 fig9 = grafico_ocorrencias_mes_tipo(df)
 fig9.show()
+
+def previsao_tendencia_bairros(df):
+    # Preparar os dados para o Prophet
+    df['ano_mes'] = df['data'].dt.to_period('M').astype(str)
+    ocorrencias_tempo_bairro = df.groupby(['ano_mes', 'neighborhood']).size().reset_index(name='ocorrencias')
+    
+    # Criar um DataFrame para cada bairro
+    previsoes = []
+    for bairro in ocorrencias_tempo_bairro['neighborhood'].unique():
+        df_bairro = ocorrencias_tempo_bairro[ocorrencias_tempo_bairro['neighborhood'] == bairro]
+        df_bairro = df_bairro.rename(columns={'ano_mes': 'ds', 'ocorrencias': 'y'})
+        df_bairro['ds'] = pd.to_datetime(df_bairro['ds'])  # Convert 'ds' to datetime format
+        
+        # Treinar o modelo Prophet
+        modelo = Prophet()
+        modelo.fit(df_bairro)
+        
+        # Criar um DataFrame para as previsões futuras
+        futuro = modelo.make_future_dataframe(periods=12, freq='M')
+        previsao = modelo.predict(futuro)
+        
+        # Adicionar o bairro às previsões
+        previsao['neighborhood'] = bairro
+        previsoes.append(previsao[['ds', 'yhat', 'neighborhood']])
+    
+    # Concatenar todas as previsões
+    previsoes_df = pd.concat(previsoes)
+    
+    # Gerar o gráfico
+    fig = px.line(previsoes_df, x='ds', y='yhat', color='neighborhood',
+                  title='Previsão de Tendência de Ocorrências por Bairro',
+                  labels={'ds': 'Ano e Mês', 'yhat': 'Previsão de Ocorrências', 'neighborhood': 'Bairro'})
+    return fig
+
+fig_previsao = previsao_tendencia_bairros(df)
+fig_previsao.show()
