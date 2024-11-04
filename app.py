@@ -132,20 +132,8 @@ clusters = kmeans.fit_predict(X)
 
 df['Cluster'] = clusters  # Atribuir clusters ao DataFrame
 
-# Visualização dos clusters com PCA
-pca = PCA(n_components=2)
-X_pca = pca.fit_transform(X)
 
-fig3 = px.scatter(
-    x=X_pca[:, 0], 
-    y=X_pca[:, 1], 
-    color=df['Cluster'].astype(str),
-    title='Visualização dos Clusters com PCA',
-    labels={'x': 'Componente Principal 1', 'y': 'Componente Principal 2', 'color': 'Cluster'}
-)
-fig3.show()
-
-# Novo Gráfico: Ocorrências por Dia da Semana e Horário
+# Ocorrências por Dia da Semana e Horário
 def grafico_ocorrencias_dia_hora(df):
     # Traduzir os dias da semana para português
     df['dia_semana'] = df['data'].dt.day_name().map({
@@ -181,10 +169,10 @@ def grafico_ocorrencias_dia_hora(df):
     )
     return fig
 
-fig4 = grafico_ocorrencias_dia_hora(df)
-fig4.show()
+fig3 = grafico_ocorrencias_dia_hora(df)
+fig3.show()
 
-# Gráfico 5: Ocorrências ao Longo do Tempo por Bairro
+# Gráfico: Ocorrências ao Longo do Tempo por Bairro
 def grafico_ocorrencias_tempo_bairro(df):
     df['ano_mes'] = df['data'].dt.to_period('M').astype(str)  # Converter Period para string
     ocorrencias_tempo_bairro = df.groupby(['ano_mes', 'neighborhood']).size().reset_index(name='ocorrencias')
@@ -193,10 +181,10 @@ def grafico_ocorrencias_tempo_bairro(df):
                   labels={'ano_mes': 'Ano e Mês', 'ocorrencias': 'Número de Ocorrências', 'neighborhood': 'Bairro'})
     return fig
 
-fig5 = grafico_ocorrencias_tempo_bairro(df)
-fig5.show()
+fig4 = grafico_ocorrencias_tempo_bairro(df)
+fig4.show()
 
-# Gráfico 6: Ocorrências por Tipo de Crime e Bairro
+# Gráfico: Ocorrências por Tipo de Crime e Bairro
 def grafico_ocorrencias_tipo_bairro(df):
     ocorrencias_tipo_bairro = df.groupby(['motivos', 'neighborhood']).size().reset_index(name='ocorrencias')
     fig = px.bar(ocorrencias_tipo_bairro, x='neighborhood', y='ocorrencias', color='motivos',
@@ -204,31 +192,21 @@ def grafico_ocorrencias_tipo_bairro(df):
                  labels={'neighborhood': 'Bairro', 'ocorrencias': 'Número de Ocorrências', 'motivos': 'Tipo de Crime'})
     return fig
 
-fig6 = grafico_ocorrencias_tipo_bairro(df)
-fig6.show()
+fig5 = grafico_ocorrencias_tipo_bairro(df)
+fig5.show()
 
-# Gráfico 7: Mapa de Calor de Ocorrências por Latitude e Longitude
-def grafico_mapa_calor(df):
-    fig = px.density_mapbox(df, lat='latitude', lon='longitude', z='motivos', radius=10,
-                            center=dict(lat=-12.9714, lon=-38.5014), zoom=10,
-                            mapbox_style="stamen-terrain",
-                            title='Mapa de Calor de Ocorrências por Latitude e Longitude')
-    return fig
 
-fig7 = grafico_mapa_calor(df)
-fig7.show()
-
-# Gráfico 8: Idade das Vítimas por Tipo de Crime
+# Gráfico: Idade das Vítimas por Tipo de Crime
 def grafico_idade_tipo_crime(df):
     fig = px.scatter(df, x='age', y='motivos', color='motivos',
                      title='Idade das Vítimas por Tipo de Crime',
                      labels={'age': 'Idade', 'motivos': 'Tipo de Crime'})
     return fig
 
-fig8 = grafico_idade_tipo_crime(df)
-fig8.show()
+fig6 = grafico_idade_tipo_crime(df)
+fig6.show()
 
-# Gráfico 9: Ocorrências por Mês e Tipo de Crime
+# Gráfico: Ocorrências por Mês e Tipo de Crime
 def grafico_ocorrencias_mes_tipo(df):
     ocorrencias_mes_tipo = df.groupby(['month', 'motivos']).size().reset_index(name='ocorrencias')
     fig = px.bar(ocorrencias_mes_tipo, x='month', y='ocorrencias', color='motivos',
@@ -236,8 +214,8 @@ def grafico_ocorrencias_mes_tipo(df):
                  labels={'month': 'Mês', 'ocorrencias': 'Número de Ocorrências', 'motivos': 'Tipo de Crime'})
     return fig
 
-fig9 = grafico_ocorrencias_mes_tipo(df)
-fig9.show()
+fig7 = grafico_ocorrencias_mes_tipo(df)
+fig7.show()
 
 def previsao_tendencia_bairros(df):
     # Preparar os dados para o Prophet
