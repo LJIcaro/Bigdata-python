@@ -1,0 +1,241 @@
+/* Reset básico */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Cabeçalho */
+#main-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8B0000;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-header {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-header:hover {
+    color: #ffcccc;
+}
+
+/* Container principal */
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid #8B0000;
+    border-right: 5px solid #8B0000;
+}
+
+/* Seções */
+.section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Títulos */
+.titulo {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    text-align: center;
+    color: #8B0000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.titulo-1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #8B0000;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Texto */
+.texto-1 {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 15px 0;
+    color: #555;
+    text-align: justify;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Destaque */
+strong {
+    color: #8B0000;
+}
+
+/* Conteúdo */
+.conteudo-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Gráficos */
+.grafico-1, .grafico-2, .grafico-3, .grafico-4, .grafico-5 {
+    background-color: #f8f9fa;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Texto dentro dos gráficos */
+.txt-1 {
+    margin: 20px;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Animação de texto */
+.texto-1 {
+    font-size: 1.2rem;
+    position: relative;
+    margin: 15px;
+    animation: appear 1s ease-in-out;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Imagens */
+.img-1 {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de registros */
+.li-registros {
+    position: relative;
+    margin-left: 20px;
+    list-style-type: disc;
+    margin-bottom: 10px;
+}
+
+/* Container de aprendizado de máquina */
+.machine-learn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título da seção de aprendizado de máquina */
+.machine-learn-title {
+    font-size: 2rem;
+    color: #8B0000;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Texto da seção de aprendizado de máquina */
+.machine-learn-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #8B0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+.btn:hover {
+    background-color: #ff4d4d;
+}
+
+/* Seção de referência externa */
+.referencia-externa {
+    background-color: #8B0000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+    text-align: center;
+}
+
+.referencia-externa h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.referencia-externa p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 15px 0;
+    text-align: justify;
+    font-family: 'Open Sans', sans-serif;
+}
