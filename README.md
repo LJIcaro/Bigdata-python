@@ -1,5 +1,5 @@
 # Bigdata-python
-Repositorio contruido como hospedagem do trabalho avaliativo semestral da disciplina Tópicos de BigData em Python, ministrada pelo Prof. ROney Camargo, Malaguti, no Centro Universitário Ruy Barbosa
+Repositorio contruido como hospedagem do trabalho avaliativo semestral da disciplina Tópicos de BigData em Python, ministrada pelo Prof. Roney Camargo, Malaguti, no Centro Universitário Ruy Barbosa
 
 # Alunos envolvidos no projeto
 - Ícaro Lima: 202308425951
