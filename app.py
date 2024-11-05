@@ -195,17 +195,21 @@ def grafico_ocorrencias_tipo_bairro(df):
 fig5 = grafico_ocorrencias_tipo_bairro(df)
 fig5.show()
 
-
-# Gráfico: Idade das Vítimas por Tipo de Crime
-def grafico_idade_tipo_crime(df):
-    fig = px.scatter(df, x='age', y='motivos', color='motivos',
-                     title='Idade das Vítimas por Tipo de Crime',
-                     labels={'age': 'Idade', 'motivos': 'Tipo de Crime'})
+# Gráfico: Idade das Vítimas 
+def grafico_media_idade_tipo_crime(df):
+    # Calcular a média de idade por tipo de crime
+    media_idade_crime = df.groupby('motivos')['age'].mean().reset_index()
+    media_idade_crime.columns = ['motivos', 'media_idade']
+    
+    # Criar o gráfico de barras verticais
+    fig = px.bar(media_idade_crime, x='motivos', y='media_idade', 
+                 title='Média de Idade das Vítimas por Tipo de Crime',
+                 labels={'media_idade': 'Média de Idade', 'motivos': 'Tipo de Crime'},
+                 color='motivos')
     return fig
 
-fig6 = grafico_idade_tipo_crime(df)
+fig6 = grafico_media_idade_tipo_crime(df)
 fig6.show()
-
 # Gráfico: Ocorrências por Mês e Tipo de Crime
 def grafico_ocorrencias_mes_tipo(df):
     ocorrencias_mes_tipo = df.groupby(['month', 'motivos']).size().reset_index(name='ocorrencias')
