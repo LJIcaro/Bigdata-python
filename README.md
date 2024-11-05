@@ -1,5 +1,13 @@
 # Bigdata-python
-Repositorio do trabalho de roney
+Repositorio contruido como hospedagem do trabalho avaliativo semestral da disciplina Tópicos de BigData em Python, ministrada pelo Prof. ROney Camargo, Malaguti, no Centro Universitário Ruy Barbosa
+
+# Alunos envolvidos no projeto
+- Ícaro Lima: 202308425951
+- Ruan Müller: 202302372546
+- Wesley Reis: 202202212075
+- Alan Goes: 202403797291
+- Luan Masao: 202308337696
+- Cleiton Sousa: 202201017058
 
 # Instruções para Criar um Ambiente Virtual e Instalar Dependências
 
