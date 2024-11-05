@@ -339,7 +339,7 @@ fig8.show()
 
 * Cria um gráfico de dispersão mostrando a relação entre a idade das vítimas e os tipos de crimes.
 
-# Gráfico 9: Ocorrências por Mês e Tipo de Crime
+## Gráfico 9: Ocorrências por Mês e Tipo de Crime
 ```
 def grafico_ocorrencias_mes_tipo(df):
     ocorrencias_mes_tipo = df.groupby(['month', 'motivos']).size().reset_index(name='ocorrencias')
@@ -355,7 +355,7 @@ fig7.show()
 * Agrupa os dados por month e motivos.
 * Cria um gráfico de barras mostrando as ocorrências por mês e tipo de crime.
 
-# Função previsao_tendencia_bairros
+## Função previsao_tendencia_bairros
 ```
 def previsao_tendencia_bairros(df):
     df['ano_mes'] = df['data'].dt.to_period('M').astype(str)
